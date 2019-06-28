@@ -41,38 +41,38 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
         }
 
 
-	public static int maxval(int[] prob,List<int> ls)
+	public static int maxValue(int[] chancesOfMax,List<int> ls)
         { 
-	  int m=prob[ls[0]];
+	  int num=chancesOfMax[ls[0]];
           if(ls.Count != 1)
           {
 		foreach(int i in ls)
           	{ 
-	          if(m<prob[i])
+	          if(num<chancesOfMax[i])
             	  {
-                  m=prob[i];
+                  num=chancesOfMax[i];
                   }
           	}
           }
-          return m;
+          return num;
         }
-        public static int minval(int[] prob,List<int> ls)
+        public static int minValue(int[] chancesOfMin,List<int> ls)
         {
-	  int m=prob[ls[0]];
+	  int num=chancesOfMin[ls[0]];
           if(ls.Count != 1)
           {
 	     foreach(int i in ls)
                 { 
-		  if(m>prob[i])
+		  if(num>chancesOfMin[i])
             	  {
-                  m=prob[i];
+                  num=chancesOfMin[i];
                   }
                 }
           }
-          return m;
+          return num;
         }
 
-         public static List<int> Indexofall(int[] prob,List<int> ls,int val)
+         public static List<int> IndexOfAll(int[] prob,List<int> ls,int val)
          { 
              List<int> resindex=new List<int>();
              foreach(int x in ls)
@@ -91,17 +91,17 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
         {
             // Add your code here.
 
-	    int l1=protein.Length;
-            int[] cal=new int[l1];
-            for(int i=0;i<l1;i++)
+	    int length1=protein.Length;
+            int[] cal=new int[length1];
+            for(int i=0;i<length1;i++)
             { 
 		cal[i]=protein[i]*5 + carbs[i]*5 + fat[i]*9;
 	    }   
-            int maxprotein=protein.Max();
+            int maxProtein=protein.Max();
          
-            int maxfat=fat.Max();
+            int maxFat=fat.Max();
            
-            int maxcal=cal.Max();
+            int maxCal=cal.Max();
          
             int[] res=new int[dietPlans.Length];
             
@@ -109,7 +109,7 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
             {
 
                List<int> ls = new List<int>();
-              for(int k=0;k<l1;k++)
+              for(int k=0;k<length1;k++)
               { 
                   ls.Add(k);
               }
@@ -128,29 +128,29 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
               { 
 		  switch(arr[j])
                       {
-                         case 'C': maxv=maxval(carbs,ls);
-                                   ls = Indexofall(carbs,ls,maxv);
+                         case 'C': maxv=maxValue(carbs,ls);
+                                   ls = IndexOfAll(carbs,ls,maxv);
                                    break;
-		         case 'c': minv=minval(carbs,ls);
-                                   ls=Indexofall(carbs,ls,minv);
+		         case 'c': minv=minValue(carbs,ls);
+                                   ls=IndexOfAll(carbs,ls,minv);
                              	   break;
-                         case 'P': maxv=maxval(protein,ls);
-                             	   ls=Indexofall(protein,ls,maxv);
+                         case 'P': maxv=maxValue(protein,ls);
+                             	   ls=IndexOfAll(protein,ls,maxv);
                                    break;
-                         case 'p': minv=minval(protein,ls);
-                         	   ls=Indexofall(protein,ls,minv);
+                         case 'p': minv=minValue(protein,ls);
+                         	   ls=IndexOfAll(protein,ls,minv);
                              	   break;
-                         case 'F': maxv=maxval(fat,ls);
-                                   ls=Indexofall(fat,ls,maxv);
+                         case 'F': maxv=maxValue(fat,ls);
+                                   ls=IndexOfAll(fat,ls,maxv);
                              	   break;
-                    	 case 'f': minv=minval(fat,ls);
-                                   ls=Indexofall(fat,ls,minv);
+                    	 case 'f': minv=minValue(fat,ls);
+                                   ls=IndexOfAll(fat,ls,minv);
                                    break;
-                         case 'T': maxv=maxval(cal,ls);
-                                   ls=Indexofall(cal,ls,maxv);
+                         case 'T': maxv=maxValue(cal,ls);
+                                   ls=IndexOfAll(cal,ls,maxv);
                              	   break;
-                    	 case 't': minv=minval(cal,ls);
-                             	   ls=Indexofall(cal,ls,minv);
+                    	 case 't': minv=minValue(cal,ls);
+                             	   ls=IndexOfAll(cal,ls,minv);
                              	   break;
                       }
                 if(ls.Count==1)
